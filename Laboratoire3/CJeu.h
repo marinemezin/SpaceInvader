@@ -4,9 +4,9 @@
 class CJeu
 {
 private : 
-	CTour T1;
-	CTour T2;
-	CTour T3;
+	CTour *T1;
+	CTour *T2;
+	CTour *T3;
 	int score;
 
 public: 
