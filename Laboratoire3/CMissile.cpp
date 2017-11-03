@@ -40,7 +40,7 @@ void CMissile::monter()
 	}
 	Verrou.lock();
 	CEcran::Gotoxy(Colonne, Ligne);
-	cout << " " << flush;
+	cout << "x";
 	CEcran::Gotoxy(0, 0);
 	Verrou.unlock();
 	delete this;
