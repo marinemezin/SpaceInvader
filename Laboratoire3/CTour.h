@@ -11,7 +11,7 @@ private:
 
 
 public:
-	CTour();
+	CTour(int positionX, int positionY);
 	~CTour();
 
 	//Créé un thread pour lancer un missile

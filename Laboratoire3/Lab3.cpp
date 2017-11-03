@@ -1,8 +1,9 @@
 #include <iostream>
 using namespace std;
+#include "CTour.h";
 
 int main()
 {
-	new
+	CTour T1;
 	return 0;
 }
