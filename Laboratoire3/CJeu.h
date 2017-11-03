@@ -8,8 +8,10 @@ private :
 	CTour *T2;
 	CTour *T3;
 	int score;
-
+	
 public: 
 	CJeu();
 	~CJeu();
+	void Afficher();
+
 };
