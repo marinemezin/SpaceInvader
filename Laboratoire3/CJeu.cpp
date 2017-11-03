@@ -4,9 +4,9 @@
 
 CJeu::CJeu()
 {
-	T1 = new CTour(30,10);
-	T2 = new CTour(30,20);
-	T3 = new CTour(30,30);
+	T1 = new CTour(30,20);
+	T2 = new CTour(30,40);
+	T3 = new CTour(30,60);
 	score = 0;
 }
 
@@ -17,11 +17,8 @@ CJeu::~CJeu()
 
 void CJeu::Afficher()
 {
-	CEcran::Gotoxy(10, 30);
-	cout << "O";
-	CEcran::Gotoxy(20, 30);
-	cout << "O";
-	CEcran::Gotoxy(20, 30);
-	cout << "O";
+	T1->afficher();
+	T2->afficher();
+	T3->afficher();
 }
 //Gotoxy(COLONNE,LIGNE)
