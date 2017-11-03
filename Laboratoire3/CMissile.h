@@ -3,18 +3,20 @@
 #include <thread>
 #include <mutex>
 
+using namespace std;
+
 class CMissile 
 {
 private:
 	int Colonne;
 	int Ligne;
-	std::thread* LeThread;
+	thread* LeThread;
 
 	//Appeler dans le constructeur pour le faire monter direct
 	void monter();
 	
-	static int Verrou;
+	static mutex Verrou;
 public:
-	CMissile();
+	CMissile(int Ligne, int Colonne);
 	~CMissile();	
 };
