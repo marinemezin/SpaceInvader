@@ -112,13 +112,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CEcran.cpp" />
+    <ClCompile Include="CMissile.cpp" />
+    <ClCompile Include="CTour.cpp" />
+    <ClCompile Include="CVaisseau.cpp" />
     <ClCompile Include="Lab3.cpp" />
-    <ClCompile Include="vaisseau.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCoul.h" />
     <ClInclude Include="CEcran.h" />
-    <ClInclude Include="vaisseau.h" />
+    <ClInclude Include="CMissile.h" />
+    <ClInclude Include="CTour.h" />
+    <ClInclude Include="CVaisseau.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
