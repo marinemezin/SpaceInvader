@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include "CEcran.h"
 #include "CJeu.h"
 
 CJeu::CJeu()
@@ -17,5 +17,11 @@ CJeu::~CJeu()
 
 void CJeu::Afficher()
 {
-
+	CEcran::Gotoxy(10, 30);
+	cout << "O";
+	CEcran::Gotoxy(20, 30);
+	cout << "O";
+	CEcran::Gotoxy(20, 30);
+	cout << "O";
 }
+//Gotoxy(COLONNE,LIGNE)
