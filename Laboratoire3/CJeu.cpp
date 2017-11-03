@@ -4,9 +4,9 @@
 
 CJeu::CJeu()
 {
-	T1 = new CTour(30,20);
-	T2 = new CTour(30,40);
-	T3 = new CTour(30,60);
+	T1 = new CTour(20,30);
+	T2 = new CTour(50,30);
+	T3 = new CTour(80,30);
 	score = 0;
 }
 

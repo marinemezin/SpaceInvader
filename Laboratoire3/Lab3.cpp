@@ -8,7 +8,7 @@ int main()
 {
 	CJeu *jeu = new CJeu();
 	jeu->Afficher();
-	CEcran::Gotoxy(79, 30);
+	CEcran::Gotoxy(0, 31);
 	system("PAUSE");
 	return 0;
 }
