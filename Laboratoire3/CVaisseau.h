@@ -3,16 +3,18 @@
 #include <thread>
 #include <mutex>
 
+using namespace std;
+
 class CVaisseau
 {
 private:
 	int Colonne;
 	int Ligne;
-	std::thread* LeThread;
+	thread* LeThread;
 
 	void deplacer();
 
-	static int Verrou;
+	static mutex Verrou;
 public:
 	CVaisseau();
 	~CVaisseau();
