@@ -6,8 +6,8 @@ class CTour
 {
 private:
 	CMissile* monMissile;
-	int PositionX;
-	int PositionY;
+	int Ligne;
+	int Colonne;
 
 
 public:

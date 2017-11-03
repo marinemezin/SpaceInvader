@@ -1,11 +1,11 @@
 #include <iostream>
 #include "CTour.h"
 
-CTour::CTour(int positionX, int positionY)
+CTour::CTour(int Lig, int Col)
 {
 	monMissile = 0;
-	PositionX = positionX;
-	PositionY = positionY; 
+	Ligne = Lig;
+	Colonne = Col; 
 }
 
 CTour::~CTour()
