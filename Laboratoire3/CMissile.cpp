@@ -36,7 +36,7 @@ void CMissile::monter()
 		CEcran::Gotoxy(79, 24);
 		Verrou.unlock();
 
-		this_thread::sleep_for(chrono::milliseconds(50));
+		this_thread::sleep_for(chrono::milliseconds(500));
 	}
 	Verrou.lock();
 	CEcran::Gotoxy(Colonne, Ligne);
