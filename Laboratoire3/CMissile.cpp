@@ -38,4 +38,10 @@ void CMissile::monter()
 
 		this_thread::sleep_for(chrono::milliseconds(50));
 	}
+	Verrou.lock();
+	CEcran::Gotoxy(Colonne, Ligne);
+	cout << " " << flush;
+	CEcran::Gotoxy(0, 0);
+	Verrou.unlock();
+	delete this;
 }
