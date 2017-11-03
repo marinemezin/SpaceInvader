@@ -26,7 +26,7 @@ void CTour::lancerMissile()
 
 void CTour::afficher()
 {
-	CEcran::Gotoxy(Ligne, Colonne);
+	CEcran::Gotoxy(Colonne, Ligne);
 	cout << "O";
 }
 
