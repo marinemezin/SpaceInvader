@@ -1,5 +1,6 @@
 #include <iostream>
 #include "CTour.h"
+#include "CEcran.h"
 
 CTour::CTour(int Lig, int Col)
 {
@@ -21,5 +22,11 @@ void CTour::lancerMissile()
 		this_thread::sleep_for(chrono::milliseconds(50));
 
 	}
+}
+
+void CTour::afficher()
+{
+	CEcran::Gotoxy(Ligne, Colonne);
+	cout << "O";
 }
 
