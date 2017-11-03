@@ -10,6 +10,7 @@ private:
 	int Ligne;
 	std::thread* LeThread;
 
+	//Appeler dans le constructeur pour le faire monter direct
 	void monter();
 	
 	static int Verrou;
