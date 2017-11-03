@@ -112,6 +112,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CEcran.cpp" />
+    <ClCompile Include="CJeu.cpp" />
     <ClCompile Include="CMissile.cpp" />
     <ClCompile Include="CTour.cpp" />
     <ClCompile Include="CVaisseau.cpp" />
@@ -120,6 +121,7 @@
   <ItemGroup>
     <ClInclude Include="CCoul.h" />
     <ClInclude Include="CEcran.h" />
+    <ClInclude Include="CJeu.h" />
     <ClInclude Include="CMissile.h" />
     <ClInclude Include="CTour.h" />
     <ClInclude Include="CVaisseau.h" />
