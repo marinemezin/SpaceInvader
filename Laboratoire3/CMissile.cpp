@@ -25,7 +25,7 @@ CMissile::~CMissile()
 
 void CMissile::monter()
 {
-	while (Ligne >= 0)
+	while (Ligne > 0)
 	{
 		Verrou.lock();
 		CEcran::Gotoxy(Colonne, Ligne);
@@ -35,12 +35,11 @@ void CMissile::monter()
 		cout << "|";
 		CEcran::Gotoxy(0, 29);
 		Verrou.unlock();
-
 		this_thread::sleep_for(chrono::milliseconds(200));
 	}
 	Verrou.lock();
 	CEcran::Gotoxy(Colonne, Ligne);
-	cout << "x";
+	cout << " ";
 	CEcran::Gotoxy(0, 0);
 	Verrou.unlock();
 	delete this;
