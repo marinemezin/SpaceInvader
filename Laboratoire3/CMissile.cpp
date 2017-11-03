@@ -33,10 +33,10 @@ void CMissile::monter()
 		Ligne--;
 		CEcran::Gotoxy(Colonne, Ligne);
 		cout << "|";
-		CEcran::Gotoxy(79, 24);
+		CEcran::Gotoxy(0, 29);
 		Verrou.unlock();
 
-		this_thread::sleep_for(chrono::milliseconds(250));
+		this_thread::sleep_for(chrono::milliseconds(200));
 	}
 	Verrou.lock();
 	CEcran::Gotoxy(Colonne, Ligne);
