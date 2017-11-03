@@ -12,3 +12,11 @@ int main()
 	system("PAUSE");
 	return 0;
 }
+
+/*
+Le missile ne meure pas 
+
+Il faut verifie appuier sur une touche pour le missile et verifier un missile par tour
+Faire les vaisseau
+
+*/
