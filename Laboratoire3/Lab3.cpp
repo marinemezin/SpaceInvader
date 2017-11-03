@@ -4,6 +4,5 @@ using namespace std;
 
 int main()
 {
-	CTour T1;
 	return 0;
 }
