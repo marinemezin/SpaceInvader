@@ -7,6 +7,7 @@ CTour::CTour(int Lig, int Col)
 	monMissile = 0;
 	Ligne = Lig;
 	Colonne = Col; 
+	LeThread = new thread(&CTour::lancement, this);
 }
 
 CTour::~CTour()
@@ -30,3 +31,7 @@ void CTour::afficher()
 	cout << "O";
 }
 
+void CTour::lancement()
+{
+
+}
