@@ -2,6 +2,8 @@
 #include "CTour.h"
 #include "CEcran.h"
 
+mutex CMissile::Verrou;
+
 CTour::CTour(int Lig, int Col)
 {
 	monMissile = 0;
