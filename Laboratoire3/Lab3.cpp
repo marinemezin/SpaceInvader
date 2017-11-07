@@ -14,7 +14,7 @@ int main()
 }
 
 /*
-Il faut verifie appuier sur une touche pour le missile et verifier un missile par tour
+Il faut verifie appuyer sur une touche pour le missile et verifier un missile par tour
 Faire les vaisseau
 
 */
