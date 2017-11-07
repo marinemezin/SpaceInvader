@@ -20,6 +20,6 @@ void CJeu::Afficher()
 	T1->afficher();
 	T2->afficher();
 	T3->afficher();
-	T1->lancerMissile();
+	//T1->lancerMissile();
 }
 //Gotoxy(COLONNE,LIGNE)

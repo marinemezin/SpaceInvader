@@ -13,7 +13,7 @@ private:
 	int Colonne;
 	thread* LeThread;
 
-	static mutex Verrou;
+	static mutex Verroulancement;
 
 public:
 	CTour(int numtour, int positionX, int positionY);
