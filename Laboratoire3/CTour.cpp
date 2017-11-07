@@ -37,7 +37,7 @@ void CTour::afficher()
 
 void CTour::lancement()
 {
-	while (true)
+	while (monMissile == 0)
 	{
 		Verroulancement.lock();
 		if (_getch() != numerotour)
