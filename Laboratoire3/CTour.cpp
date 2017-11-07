@@ -1,11 +1,13 @@
 #include <iostream>
 #include "CTour.h"
 #include "CEcran.h"
+#include "conio.h"
 
 mutex CMissile::Verrou;
 
-CTour::CTour(int Lig, int Col)
+CTour::CTour(int num,int Lig, int Col)
 {
+	numerotour = num;
 	monMissile = 0;
 	Ligne = Lig;
 	Colonne = Col; 
@@ -35,5 +37,10 @@ void CTour::afficher()
 
 void CTour::lancement()
 {
-
+	Verrou.lock();
+	if(_getch()!=numerotour)
+	{ 
+		lancerMissile();
+	}
+	Verrou.unlock();
 }

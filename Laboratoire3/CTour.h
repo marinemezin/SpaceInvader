@@ -7,14 +7,16 @@
 class CTour
 {
 private:
+	int numerotour;
 	CMissile* monMissile;
 	int Ligne;
 	int Colonne;
 	thread* LeThread;
 
+	static mutex Verrou;
 
 public:
-	CTour(int positionX, int positionY);
+	CTour(int numtour, int positionX, int positionY);
 	~CTour();
 
 	//Créé un thread pour lancer un missile
