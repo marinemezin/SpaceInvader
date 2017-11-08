@@ -1,7 +1,6 @@
 #pragma once
 
 #include <thread>
-#include <mutex>
 
 using namespace std;
 
@@ -14,7 +13,6 @@ private:
 
 	void deplacerGD();
 
-	static mutex VerrouVaisseau;
 public:
 	CVaisseau();
 	~CVaisseau();

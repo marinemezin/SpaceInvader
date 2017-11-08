@@ -1,7 +1,6 @@
 #pragma once
 
 #include <thread>
-#include <mutex>
 #include "CTour.h"
 
 using namespace std;
@@ -16,8 +15,7 @@ private:
 
 	//Appeler dans le constructeur pour le faire monter direct
 	void monter();
-	
-	static mutex Verrou;
+
 public:
 	CMissile(int Lig, int Col, CTour* tour);
 	~CMissile();

@@ -1,14 +1,11 @@
 #include <iostream>
-
+#include "CVaisseau.h"
+#include "CEcran.h"
+#include "CJeu.h"
 #include <thread>
-#include <mutex>
 
 using namespace std;
 
-#include "CVaisseau.h"
-#include "CEcran.h"
-
-mutex CVaisseau::VerrouVaisseau;
 
 CVaisseau::CVaisseau()
 {
@@ -34,7 +31,7 @@ void CVaisseau::deplacerGD()
 {
 	while (Colonne + 2 < 100)
 	{
-		VerrouVaisseau.lock();
+		CJeu::VerrouJeu.lock();
 		//On efface l'ancien vaisseau
 		CEcran::Gotoxy(Colonne, Ligne);
 		cout << " ";
@@ -51,10 +48,10 @@ void CVaisseau::deplacerGD()
 		CEcran::Gotoxy(Colonne + 2, Ligne);
 		cout << ">";
 		CEcran::Gotoxy(0, 29);
-		VerrouVaisseau.unlock();
+		CJeu::VerrouJeu.unlock();
 		this_thread::sleep_for(chrono::milliseconds(200));
 	}
-	VerrouVaisseau.lock();
+	CJeu::VerrouJeu.lock();
 	CEcran::Gotoxy(Colonne, Ligne);
 	cout << " ";
 	CEcran::Gotoxy(Colonne + 1, Ligne);
@@ -62,6 +59,6 @@ void CVaisseau::deplacerGD()
 	CEcran::Gotoxy(Colonne + 2, Ligne);
 	cout << " ";
 	CEcran::Gotoxy(0, 0);
-	VerrouVaisseau.unlock();
+	CJeu::VerrouJeu.unlock();
 	delete this;
 }

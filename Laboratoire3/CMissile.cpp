@@ -1,14 +1,12 @@
 #include <iostream>
 
 #include <thread>
-#include <mutex>
 
 #include "CMissile.h"
 #include "CEcran.h"
+#include "CJeu.h"
 
 using namespace std;
-
-mutex CMissile::Verrou;
 
 CMissile::CMissile(int Lig, int Col, CTour* tour)
 {
@@ -29,20 +27,20 @@ void CMissile::monter()
 {
 	while (Ligne > 0)
 	{
-		Verrou.lock();
+		CJeu::VerrouJeu.lock();
 		CEcran::Gotoxy(Colonne, Ligne);
 		cout << " ";
 		Ligne--;
 		CEcran::Gotoxy(Colonne, Ligne);
 		cout << "|";
 		CEcran::Gotoxy(0, 29);
-		Verrou.unlock();
+		CJeu::VerrouJeu.unlock();
 		this_thread::sleep_for(chrono::milliseconds(200));
 	}
-	Verrou.lock();
+	CJeu::VerrouJeu.lock();
 	CEcran::Gotoxy(Colonne, Ligne);
 	cout << " ";
 	CEcran::Gotoxy(0, 0);
-	Verrou.unlock();
+	CJeu::VerrouJeu.unlock();
 	delete this;
 }

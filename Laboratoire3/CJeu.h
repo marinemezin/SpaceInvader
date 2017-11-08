@@ -18,12 +18,12 @@ private :
 
 	void Afficher();
 	void goVaisseau();
-
-	static mutex VerrouJeu;
 	
 public: 
 	CJeu();
 	~CJeu();
 
 	void jouer();
+
+	static mutex VerrouJeu;
 };
