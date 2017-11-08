@@ -1,13 +1,13 @@
 #include <iostream>
-using namespace std;
-#include "CJeu.h";
-#include "CEcran.h";
+#include "CJeu.h"
+#include "CEcran.h"
 
+using namespace std;
 
 int main()
 {
 	CJeu *jeu = new CJeu();
-	jeu->Afficher();
+	jeu->jouer();
 	CEcran::Gotoxy(0, 29);
 	system("PAUSE");
 	return 0;
