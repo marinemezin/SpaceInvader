@@ -8,12 +8,15 @@ int main()
 {
 	CJeu *jeu = new CJeu();
 	jeu->jouer();
-	CEcran::Gotoxy(0, 29);
+	CEcran::Gotoxy(0, 30);
 	system("PAUSE");
 	return 0;
 }
 
 /*
-Problème avec les lock
-Les vaisseaux et missiles s'effacent mal et des parties restent bloquer comme la neige du prof avant le lock
+Tant qu'il y a encore des vaisseaux qui sont vivants ou créés alors la partie continue :
+Mettre un nombre max de vaisseau actuellement en vie et de vaisseaux restants à créer
+
+Random pour ligne des vaisseaux à faire
+Faire DG pour vaisseau
 */

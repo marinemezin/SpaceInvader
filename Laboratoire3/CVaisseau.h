@@ -12,8 +12,11 @@ private:
 	thread* LeThread;
 
 	void deplacerGD();
+	void deplacerDG();
 
 public:
 	CVaisseau();
 	~CVaisseau();
+
+	static int nbVaisseau;
 };

@@ -45,7 +45,7 @@ void CJeu::jouer()
 {
 	char monNumChar = _getch();
 	int monNum = monNumChar - 48;
-	while (monNum != 4)
+	while (CVaisseau::nbVaisseau != 0)
 	{
 		switch (monNum)
 		{
