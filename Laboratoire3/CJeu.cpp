@@ -38,7 +38,14 @@ void CJeu::Afficher()
 
 void CJeu::goVaisseau()
 {
-	new CVaisseau();
+	while (CVaisseau::nbVaisseauACreer != 0)
+	{
+		if (CVaisseau::nbVaisseau < 4) { //pas + de 4 vaisseau en meme temps sur le jeu
+			//des fois ça marche pas et 5 vaisseaux sont en meme temps
+			new CVaisseau();
+		}
+		this_thread::sleep_for(chrono::milliseconds(3200));
+	}
 }
 
 void CJeu::jouer()
@@ -66,18 +73,4 @@ void CJeu::jouer()
 		monNum = monNumChar - 48;
 	}
 }
-/**
-void CTour::lancement()
-{
-	while (monMissile == 0)
-	{
-		Verrou.lock();
-		char monNum = _getch();
-		if (monNum == numerotour)
-		{
-			lancerMissile();
-		}
-		Verrou.unlock();
-	}
-}/**/
 //Gotoxy(COLONNE,LIGNE)

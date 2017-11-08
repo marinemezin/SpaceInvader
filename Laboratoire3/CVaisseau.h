@@ -18,9 +18,11 @@ private:
 	void deplacerDG();
 
 	static bool premierVaisseau;
+	static int nbVaisseauCreer;
 
 public:
 	CVaisseau();
 	~CVaisseau();
 	static int nbVaisseau;
+	static int nbVaisseauACreer;
 };

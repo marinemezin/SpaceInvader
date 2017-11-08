@@ -9,6 +9,8 @@ using namespace std;
 int CVaisseau::nbVaisseau = 0;
 
 bool CVaisseau::premierVaisseau = false;
+int CVaisseau::nbVaisseauACreer = 10;
+int CVaisseau::nbVaisseauCreer = 0;
 
 CVaisseau::CVaisseau()
 {
@@ -18,6 +20,7 @@ CVaisseau::CVaisseau()
 		CVaisseau::premierVaisseau = true;
 	}
 	nbVaisseau++;
+	nbVaisseauACreer--;
 	//Lignes entre 1 et 15
 	Ligne = rand() % 15;
 	Ligne++;
