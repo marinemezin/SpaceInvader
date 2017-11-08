@@ -16,12 +16,16 @@ CJeu::CJeu()
 	T2 = new CTour(2,28,50);
 	T3 = new CTour(3,28,80);
 	score = 0;
-	LeThread = new thread(&CJeu::Afficher, this);
+	LeThread1 = new thread(&CJeu::Afficher, this);
+	LeThread2 = new thread(&CJeu::goVaisseau, this);
 }
 
 CJeu::~CJeu()
 {
-
+	LeThread1->detach();
+	delete LeThread1;
+	LeThread2->detach();
+	delete LeThread2;
 }
 
 void CJeu::Afficher()
@@ -30,6 +34,11 @@ void CJeu::Afficher()
 	T2->afficher();
 	T3->afficher();
 	//T1->lancerMissile();
+}
+
+void CJeu::goVaisseau()
+{
+	new CVaisseau();
 }
 
 void CJeu::jouer()

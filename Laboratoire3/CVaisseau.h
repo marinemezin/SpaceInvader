@@ -12,7 +12,7 @@ private:
 	int Ligne;
 	thread* LeThread;
 
-	void deplacer();
+	void deplacerGD();
 
 	static mutex Verrou;
 public:

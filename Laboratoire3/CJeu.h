@@ -1,5 +1,6 @@
 #pragma once
 #include "CTour.h"
+#include "CVaisseau.h"
 #include <thread>
 #include <mutex>
 
@@ -12,9 +13,11 @@ private :
 	CTour *T2;
 	CTour *T3;
 	int score;
-	thread* LeThread;
+	thread* LeThread1;
+	thread* LeThread2;
 
 	void Afficher();
+	void goVaisseau();
 
 	static mutex VerrouJeu;
 	
