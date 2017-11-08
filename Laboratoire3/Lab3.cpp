@@ -20,5 +20,4 @@ Dans CMissile avant de faire monter le missile il faut vérifier si un vaisseau d
 - ligne entre 1 et 15
 - colonne entre 0 et 100
 se trouve sur la même case que là où le missile veux aller (attention un vaisseau à 3 cases)
-
 */

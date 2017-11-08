@@ -24,4 +24,6 @@ public:
 	~CVaisseau();
 	static int nbVaisseau;
 	static int nbVaisseauACreer;
+	int getCol();
+	int getLig();
 };

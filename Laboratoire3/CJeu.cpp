@@ -16,8 +16,7 @@ CJeu::CJeu()
 	mesTours[1] = new CTour(2,28,50);
 	mesTours[2] = new CTour(3,28,80);
 	score = 0;
-	for (int i = 0; i < 10; i++)
-	{
+	for (int i = 0; i < 10; i++) {
 		mesVaisseaux[i] = 0;
 	}
 	LeThread1 = new thread(&CJeu::Afficher, this);
@@ -76,5 +75,23 @@ void CJeu::jouer()
 		monNumChar = _getch();
 		monNum = monNumChar - 48;
 	}
+}
+
+static bool testCollision(CMissile* ceMissile)
+{
+
+}
+
+bool CJeu::collision(CMissile* ceMissile)
+{
+	bool collision = false;
+	for(int i = 0; i < 10; i++)
+	{
+		/*mesVaisseaux[i]->getCol();
+		mesVaisseaux[i]->getLig();*/
+		//Vérifier si le missile ira à Ligne-- sur une position d'un des missiles
+		//Si oui on fait exploser le missile en question et on retourne true pour killer le missile
+	}
+	return collision;
 }
 //Gotoxy(COLONNE,LIGNE)

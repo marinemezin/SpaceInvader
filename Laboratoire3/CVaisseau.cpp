@@ -41,6 +41,16 @@ CVaisseau::~CVaisseau()
 	delete LeThread;
 }
 
+int CVaisseau::getCol()
+{
+	return Colonne;
+}
+
+int CVaisseau::getLig()
+{
+	return Ligne;
+}
+
 void CVaisseau::deplacerGD()
 {
 	while (Colonne + 2 < 100)
