@@ -20,7 +20,7 @@ void CTour::lancerMissile()
 {
 	if (monMissile == 0)
 	{
-		monMissile = new CMissile(Ligne - 1, Colonne, this);
+		monMissile = new CMissile(Ligne - 1, Colonne);
 		this_thread::sleep_for(chrono::milliseconds(50));
 	}
 }
