@@ -5,7 +5,6 @@
 
 #include "CMissile.h"
 #include "CEcran.h"
-#include "CTour.h"
 
 using namespace std;
 
@@ -16,12 +15,10 @@ CMissile::CMissile(int Lig, int Col)
 	Colonne = Col;
 	Ligne = Lig;
 	LeThread = new thread(&CMissile::monter, this);
-	//maTour = tour;
 }
 
 CMissile::~CMissile()
 {
-	//maTour->setMonMissileZero();
 	LeThread->detach();
 	delete LeThread;
 }

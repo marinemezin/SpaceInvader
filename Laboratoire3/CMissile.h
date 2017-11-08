@@ -1,6 +1,5 @@
 #pragma once
 
-#include "CTour.h"
 #include <thread>
 #include <mutex>
 
@@ -12,7 +11,6 @@ private:
 	int Colonne;
 	int Ligne;
 	thread* LeThread;
-	//CTour maTour;
 
 	//Appeler dans le constructeur pour le faire monter direct
 	void monter();
