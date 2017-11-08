@@ -11,12 +11,13 @@ private:
 	int Colonne;
 	int Ligne;
 	thread* LeThread;
+	CTour maTour;
 
 	//Appeler dans le constructeur pour le faire monter direct
 	void monter();
 	
 	static mutex Verrou;
 public:
-	CMissile(int Ligne, int Colonne);
+	CMissile(int Lig, int Col, CTour& tour);
 	~CMissile();	
 };

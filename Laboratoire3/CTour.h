@@ -18,5 +18,6 @@ public:
 	//Créé un thread pour lancer un missile
 	void lancerMissile();
 
+	void setMonMissileZero();
 	void afficher();
 };
