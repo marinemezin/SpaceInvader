@@ -25,9 +25,13 @@ CMissile::~CMissile()
 
 void CMissile::monter()
 {
-	while (Ligne > 0)
+	bool collision = false;
+	while ((Ligne > 0) || (collision = true))
 	{
 		CJeu::VerrouJeu.lock();
+		//Collision ? 
+		//vérifier ici s'il y a collision ou non
+		//Si non on bouge le missile normalement
 		CEcran::Gotoxy(Colonne, Ligne);
 		cout << " ";
 		Ligne--;

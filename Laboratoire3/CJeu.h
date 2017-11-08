@@ -9,9 +9,8 @@ using namespace std;
 class CJeu
 {
 private : 
-	CTour *T1;
-	CTour *T2;
-	CTour *T3;
+	CTour* mesTours[3];
+	CVaisseau* mesVaisseaux[10];
 	int score;
 	thread* LeThread1;
 	thread* LeThread2;

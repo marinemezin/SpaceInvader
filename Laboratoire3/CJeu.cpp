@@ -12,10 +12,14 @@ mutex CJeu::VerrouJeu;
 
 CJeu::CJeu()
 {
-	T1 = new CTour(1,28,20);
-	T2 = new CTour(2,28,50);
-	T3 = new CTour(3,28,80);
+	mesTours[0] = new CTour(1,28,20);
+	mesTours[1] = new CTour(2,28,50);
+	mesTours[2] = new CTour(3,28,80);
 	score = 0;
+	for (int i = 0; i < 10; i++)
+	{
+		mesVaisseaux[i] = 0;
+	}
 	LeThread1 = new thread(&CJeu::Afficher, this);
 	LeThread2 = new thread(&CJeu::goVaisseau, this);
 }
@@ -30,10 +34,9 @@ CJeu::~CJeu()
 
 void CJeu::Afficher()
 {
-	T1->afficher();
-	T2->afficher();
-	T3->afficher();
-	//T1->lancerMissile();
+	mesTours[0]->afficher();
+	mesTours[1]->afficher();
+	mesTours[2]->afficher();
 }
 
 void CJeu::goVaisseau()
@@ -42,7 +45,8 @@ void CJeu::goVaisseau()
 	{
 		if (CVaisseau::nbVaisseau < 4) { //pas + de 4 vaisseau en meme temps sur le jeu
 			//des fois ça marche pas et 5 vaisseaux sont en meme temps
-			new CVaisseau();
+			CVaisseau* myVaisseau = new CVaisseau();
+			mesVaisseaux[10 - CVaisseau::nbVaisseauACreer] = myVaisseau;
 		}
 		this_thread::sleep_for(chrono::milliseconds(3200));
 	}
@@ -57,13 +61,13 @@ void CJeu::jouer()
 		switch (monNum)
 		{
 		case 1:
-			T1->lancerMissile();
+			mesTours[0]->lancerMissile();
 			break;
 		case 2:
-			T2->lancerMissile();
+			mesTours[1]->lancerMissile();
 			break;
 		case 3:
-			T3->lancerMissile();
+			mesTours[2]->lancerMissile();
 			break;
 		default:
 			break;
