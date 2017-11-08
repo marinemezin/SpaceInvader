@@ -10,7 +10,6 @@ int CVaisseau::nbVaisseau = 0;
 
 bool CVaisseau::premierVaisseau = false;
 int CVaisseau::nbVaisseauACreer = 10;
-int CVaisseau::nbVaisseauCreer = 0;
 
 CVaisseau::CVaisseau()
 {
