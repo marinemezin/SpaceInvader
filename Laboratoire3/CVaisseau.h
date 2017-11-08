@@ -14,7 +14,7 @@ private:
 
 	void deplacerGD();
 
-	static mutex Verrou;
+	static mutex VerrouVaisseau;
 public:
 	CVaisseau();
 	~CVaisseau();

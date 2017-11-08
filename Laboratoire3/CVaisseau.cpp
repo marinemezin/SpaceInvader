@@ -8,7 +8,7 @@ using namespace std;
 #include "CVaisseau.h"
 #include "CEcran.h"
 
-mutex CVaisseau::Verrou;
+mutex CVaisseau::VerrouVaisseau;
 
 CVaisseau::CVaisseau()
 {
@@ -16,7 +16,8 @@ CVaisseau::CVaisseau()
 
 	//GD Colonne départ minimum 0 -> colonne = élément du centre
 	Colonne = 0;
-	Ligne = 10;
+	//Lignes entre 1 et 15
+	Ligne = 15;
 	LeThread = new thread(&CVaisseau::deplacerGD, this);
 	//DG colonne départ minimum 100
 
@@ -33,7 +34,7 @@ void CVaisseau::deplacerGD()
 {
 	while (Colonne + 2 < 100)
 	{
-		Verrou.lock();
+		VerrouVaisseau.lock();
 		//On efface l'ancien vaisseau
 		CEcran::Gotoxy(Colonne, Ligne);
 		cout << " ";
@@ -50,10 +51,10 @@ void CVaisseau::deplacerGD()
 		CEcran::Gotoxy(Colonne + 2, Ligne);
 		cout << ">";
 		CEcran::Gotoxy(0, 29);
-		Verrou.unlock();
+		VerrouVaisseau.unlock();
 		this_thread::sleep_for(chrono::milliseconds(200));
 	}
-	Verrou.lock();
+	VerrouVaisseau.lock();
 	CEcran::Gotoxy(Colonne, Ligne);
 	cout << " ";
 	CEcran::Gotoxy(Colonne + 1, Ligne);
@@ -61,6 +62,6 @@ void CVaisseau::deplacerGD()
 	CEcran::Gotoxy(Colonne + 2, Ligne);
 	cout << " ";
 	CEcran::Gotoxy(0, 0);
-	Verrou.unlock();
+	VerrouVaisseau.unlock();
 	delete this;
 }

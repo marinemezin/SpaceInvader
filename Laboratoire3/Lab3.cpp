@@ -14,7 +14,6 @@ int main()
 }
 
 /*
-Il faut verifie appuyer sur une touche pour le missile et verifier un missile par tour
-Faire les vaisseau
-
+Problème avec les lock
+Les vaisseaux et missiles s'effacent mal et des parties restent bloquer comme la neige du prof avant le lock
 */
