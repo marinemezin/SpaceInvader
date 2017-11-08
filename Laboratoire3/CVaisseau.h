@@ -1,6 +1,9 @@
 #pragma once
 
 #include <thread>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h> 
 
 using namespace std;
 
@@ -14,9 +17,10 @@ private:
 	void deplacerGD();
 	void deplacerDG();
 
+	static bool premierVaisseau;
+
 public:
 	CVaisseau();
 	~CVaisseau();
-
 	static int nbVaisseau;
 };

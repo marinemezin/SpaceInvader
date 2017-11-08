@@ -8,19 +8,28 @@ using namespace std;
 
 int CVaisseau::nbVaisseau = 0;
 
+bool CVaisseau::premierVaisseau = false;
+
 CVaisseau::CVaisseau()
 {
+	if (!premierVaisseau)
+	{
+		srand(time(NULL));
+		CVaisseau::premierVaisseau = true;
+	}
 	nbVaisseau++;
-	//Définir aléatoirement s'il se déplacera de DG ou GD
-
-	//GD Colonne départ minimum 0 -> colonne = élément du centre
-	Colonne = 100;
 	//Lignes entre 1 et 15
-	Ligne = 15;
-	LeThread = new thread(&CVaisseau::deplacerDG, this);
-	//DG colonne départ minimum 100
-
-	//Méthode pour créer vaisseau
+	Ligne = rand() % 15;
+	Ligne++;
+	int destin = rand() % 2;
+	if (destin == 0) { //GD
+		Colonne = 0;
+		LeThread = new thread(&CVaisseau::deplacerGD, this);
+	}
+	else { //DG
+		Colonne = 100;
+		LeThread = new thread(&CVaisseau::deplacerDG, this);
+	}
 }
 
 CVaisseau::~CVaisseau()
