@@ -1,6 +1,7 @@
 #include <iostream>
 #include "CTour.h"
 #include "CEcran.h"
+#include "CMissile.h"
 
 
 CTour::CTour(int num,int Lig, int Col)
@@ -20,7 +21,8 @@ void CTour::lancerMissile()
 {
 	if (monMissile == 0)
 	{
-		monMissile = new CMissile(Ligne - 1, Colonne);
+		new CMissile(Ligne - 1, Colonne, this);
+		monMissile++;
 		this_thread::sleep_for(chrono::milliseconds(50));
 	}
 }

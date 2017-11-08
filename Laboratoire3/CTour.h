@@ -1,14 +1,13 @@
 #pragma once
 
 #include <iostream>
-#include "CMissile.h"
 
 
 class CTour
 {
 private:
 	int numerotour;
-	CMissile* monMissile;
+	int monMissile;
 	int Ligne;
 	int Colonne;
 

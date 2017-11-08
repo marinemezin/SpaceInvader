@@ -10,15 +10,17 @@ using namespace std;
 
 mutex CMissile::Verrou;
 
-CMissile::CMissile(int Lig, int Col)
+CMissile::CMissile(int Lig, int Col, CTour* tour)
 {
 	Colonne = Col;
 	Ligne = Lig;
 	LeThread = new thread(&CMissile::monter, this);
+	maTour = tour;
 }
 
 CMissile::~CMissile()
 {
+	maTour->setMonMissileZero();
 	LeThread->detach();
 	delete LeThread;
 }
