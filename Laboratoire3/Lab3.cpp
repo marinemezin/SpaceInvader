@@ -14,6 +14,6 @@ int main()
 }
 
 /*
-Determiner ôù mettre la méthode Collision (dans CMissile, CJeu ou CTour)
+Determiner où mettre la méthode Collision (dans CMissile, CJeu ou CTour)
 Et l'adapter en fonction
 */
