@@ -112,3 +112,8 @@ void CVaisseau::deplacerDG()
 	CJeu::VerrouJeu.unlock();
 	delete this;
 }
+
+void CVaisseau::deleteCeVaisseau()
+{
+
+}

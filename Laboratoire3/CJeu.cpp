@@ -60,7 +60,7 @@ void CJeu::setMonVaisseauZero(int colV, int ligV)
 		if ((mesVaisseaux[i] != 0) && (mesVaisseaux[i]->getCol() == colV)
 									&& (mesVaisseaux[i]->getLig() == ligV))
 		{
-
+			mesVaisseaux[i]->deleteCeVaisseau();
 		}
 		//Si je tape à gauche du vaisseau
 		if ((mesVaisseaux[i] != 0) && (mesVaisseaux[i]->getCol() - 1 == colV)

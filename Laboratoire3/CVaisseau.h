@@ -26,4 +26,5 @@ public:
 	static int nbVaisseauACreer;
 	int getCol() { return Colonne; }
 	int getLig() { return Ligne; }
+	void deleteCeVaisseau();
 };
