@@ -14,7 +14,18 @@ int main()
 }
 
 /*
-Méthode collision faite
-Remonter qu'il y a eu une collision à notre plateau de jeu pour qu'il fasse mourir le vaisseau concerné
-Cad Le missile a déjà été tué reste à tuer le vaisseau
+CVaisseau* CJeu::getVaisseau(int i)
+{
+if (mesVaisseaux[i]->getCol() != -1)
+{
+return mesVaisseaux[i];
+}
+return 0;
+}
+
+Cette méthode beug
+Il me dit que le tableau est vide alors que je le rempli
+Je pense que le problème viens d'un problème de synchronisation des threads
+
+En mode debug tout fonctionne mais quand je lance ça ne fonctionne plus 
 */

@@ -21,6 +21,7 @@ private:
 
 public:
 	CVaisseau();
+	CVaisseau(int chiffre);
 	~CVaisseau();
 	static int nbVaisseau;
 	static int nbVaisseauACreer;

@@ -20,7 +20,7 @@ CJeu::CJeu()
 	mesTours[2]->afficher();
 	score = 0;
 	for (int i = 0; i < 10; i++) {
-		mesVaisseaux[i] = 0;
+		mesVaisseaux[i] = new CVaisseau(-1);
 	}
 	LeThread = new thread(&CJeu::goVaisseau, this);
 }
@@ -29,6 +29,10 @@ CJeu::~CJeu()
 {
 	LeThread->detach();
 	delete LeThread;
+	delete mesTours[0];
+	delete mesTours[1];
+	delete mesTours[2];
+	delete mesTours;
 }
 
 void CJeu::goVaisseau()
@@ -36,8 +40,7 @@ void CJeu::goVaisseau()
 	while (CVaisseau::nbVaisseauACreer != 0)
 	{
 		if (CVaisseau::nbVaisseau < 4) { //pas + de 4 vaisseau en meme temps sur le jeu
-			CVaisseau* myVaisseau = new CVaisseau();
-			mesVaisseaux[10 - CVaisseau::nbVaisseauACreer] = myVaisseau;
+			mesVaisseaux[9 - CVaisseau::nbVaisseauACreer] = new CVaisseau();
 		}
 		this_thread::sleep_for(chrono::milliseconds(3200));
 	}
@@ -45,7 +48,7 @@ void CJeu::goVaisseau()
 
 CVaisseau* CJeu::getVaisseau(int i)
 {
-	if (mesVaisseaux[i] != 0)
+	if (mesVaisseaux[i]->getCol() != -1)
 	{ 
 		return mesVaisseaux[i];
 	}
@@ -66,13 +69,13 @@ void CJeu::setMonVaisseauZero(int colV, int ligV)
 		if ((mesVaisseaux[i] != 0) && (mesVaisseaux[i]->getCol() - 1 == colV)
 			&& (mesVaisseaux[i]->getLig() == ligV))
 		{
-
+			mesVaisseaux[i]->deleteCeVaisseau();
 		}
 		//Si je tape à droite du vaisseau
 		if ((mesVaisseaux[i] != 0) && (mesVaisseaux[i]->getCol() + 1 == colV)
 			&& (mesVaisseaux[i]->getLig() == ligV))
 		{
-
+			mesVaisseaux[i]->deleteCeVaisseau();
 		}
 	}
 }

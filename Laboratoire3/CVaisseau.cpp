@@ -34,6 +34,12 @@ CVaisseau::CVaisseau()
 	}
 }
 
+CVaisseau::CVaisseau(int chiffre)
+{
+	Colonne = chiffre;
+	Ligne = chiffre;
+}
+
 CVaisseau::~CVaisseau()
 {
 	nbVaisseau--;
@@ -115,5 +121,15 @@ void CVaisseau::deplacerDG()
 
 void CVaisseau::deleteCeVaisseau()
 {
-
+	//Suppression standard
+	CJeu::VerrouJeu.lock();
+	CEcran::Gotoxy(Colonne - 1, Ligne);
+	cout << " ";
+	CEcran::Gotoxy(Colonne, Ligne);
+	cout << " ";
+	CEcran::Gotoxy(Colonne + 1, Ligne);
+	cout << " ";
+	CEcran::Gotoxy(0, 0);
+	CJeu::VerrouJeu.unlock();
+	delete this;
 }
