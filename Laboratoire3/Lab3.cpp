@@ -14,6 +14,7 @@ int main()
 }
 
 /*
-Determiner où mettre la méthode Collision (dans CMissile, CJeu ou CTour)
-Et l'adapter en fonction
+Méthode collision faite
+Remonter qu'il y a eu une collision à notre plateau de jeu pour qu'il fasse mourir le vaisseau concerné
+Cad Le missile a déjà été tué reste à tuer le vaisseau
 */

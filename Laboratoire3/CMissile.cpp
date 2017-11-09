@@ -8,13 +8,13 @@
 
 using namespace std;
 
-CMissile::CMissile(int Lig, int Col, CTour* tour/*, CJeu* jeu*/)
+CMissile::CMissile(int Lig, int Col, CTour* tour, CJeu* jeu)
 {
 	Colonne = Col;
 	Ligne = Lig;
 	LeThread = new thread(&CMissile::monter, this);
 	maTour = tour;
-	//monJeu = jeu;
+	monJeu = jeu;
 }
 
 CMissile::~CMissile()
@@ -31,16 +31,17 @@ void CMissile::monter()
 	{
 		CJeu::VerrouJeu.lock();
 		//Collision ? 
-		//vérifier ici s'il y a collision ou non
-		//Si non on bouge le missile normalement
-		CEcran::Gotoxy(Colonne, Ligne);
-		cout << " ";
-		Ligne--;
-		CEcran::Gotoxy(Colonne, Ligne);
-		cout << "|";
-		CEcran::Gotoxy(0, 30);
+		collision = attentionCollision();
+		if (!collision) {
+			CEcran::Gotoxy(Colonne, Ligne);
+			cout << " ";
+			Ligne--;
+			CEcran::Gotoxy(Colonne, Ligne);
+			cout << "|";
+			CEcran::Gotoxy(0, 30);
+		}
 		CJeu::VerrouJeu.unlock();
-		this_thread::sleep_for(chrono::milliseconds(200));
+		this_thread::sleep_for(chrono::milliseconds(100));
 	}
 	CJeu::VerrouJeu.lock();
 	CEcran::Gotoxy(Colonne, Ligne);
@@ -50,11 +51,11 @@ void CMissile::monter()
 	delete this;
 }
 
-bool CMissile::sousTestCollision(int colM, int ligM, int colV, int ligV)
+bool CMissile::sousTestCollision(int colV, int ligV)
 {
-	if (colM == colV)
+	if (Colonne == colV)
 	{
-		if (ligM - 1 == ligV)
+		if (Ligne - 1 == ligV)
 		{
 			return true;
 		}
@@ -62,35 +63,21 @@ bool CMissile::sousTestCollision(int colM, int ligM, int colV, int ligV)
 	return false;
 }
 
-bool CMissile::collision()
+bool CMissile::attentionCollision()
 {
 	bool collision = false;
 	for (int i = 0; i < 10; i++)
 	{
 		//S'il touche le bout droit
-		/*if (Colonne == mesVaisseaux[i]->getCol() - 1)
-		{
-			if (Ligne - 1 == mesVaisseaux[i]->getLig())
-			{
-				collision = true;
-			}
-		}*/
+		bool test1 = sousTestCollision(monJeu->getVaisseau(i)->getCol() - 1, monJeu->getVaisseau(i)->getLig());
 		//S'il touche le milieu
-		/*if (Colonne == mesVaisseaux[i]->getCol())
-		{
-			if (Ligne - 1 == mesVaisseaux[i]->getLig())
-			{
-				collision = true;
-			}
-		}*/
+		bool test2 = sousTestCollision(monJeu->getVaisseau(i)->getCol(), monJeu->getVaisseau(i)->getLig());
 		//S'il touche le bout gauche
-		/*if (Colonne == mesVaisseaux[i]->getCol() + 1)
+		bool test3 = sousTestCollision(monJeu->getVaisseau(i)->getCol() + 1, monJeu->getVaisseau(i)->getLig());
+		if (test1 || test2 || test3)
 		{
-			if (Ligne - 1 == mesVaisseaux[i]->getLig())
-			{
-				collision = true;
-			}
-		}*/
+			collision = true;
+		}
 	}
 	return collision;
 }

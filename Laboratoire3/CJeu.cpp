@@ -12,9 +12,9 @@ mutex CJeu::VerrouJeu;
 
 CJeu::CJeu()
 {
-	mesTours[0] = new CTour(1,28,20);
-	mesTours[1] = new CTour(2,28,50);
-	mesTours[2] = new CTour(3,28,80);
+	mesTours[0] = new CTour(1,28,20, this);
+	mesTours[1] = new CTour(2,28,50, this);
+	mesTours[2] = new CTour(3,28,80, this);
 	mesTours[0]->afficher();
 	mesTours[1]->afficher();
 	mesTours[2]->afficher();

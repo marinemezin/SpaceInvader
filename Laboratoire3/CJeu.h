@@ -1,6 +1,6 @@
 #pragma once
-#include "CTour.h"
 #include "CVaisseau.h"
+#include "CTour.h"
 #include <thread>
 #include <mutex>
 
