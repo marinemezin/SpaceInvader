@@ -36,11 +36,50 @@ void CJeu::goVaisseau()
 	while (CVaisseau::nbVaisseauACreer != 0)
 	{
 		if (CVaisseau::nbVaisseau < 4) { //pas + de 4 vaisseau en meme temps sur le jeu
-			/*CVaisseau* myVaisseau =*/ new CVaisseau();
-			//mesVaisseaux[10 - CVaisseau::nbVaisseauACreer] = myVaisseau;
+			CVaisseau* myVaisseau = new CVaisseau();
+			mesVaisseaux[10 - CVaisseau::nbVaisseauACreer] = myVaisseau;
 		}
 		this_thread::sleep_for(chrono::milliseconds(3200));
 	}
+}
+
+CVaisseau* CJeu::getVaisseau(int i)
+{
+	if (mesVaisseaux[i] != 0)
+	{ 
+		return mesVaisseaux[i];
+	}
+	return 0;
+}
+
+void CJeu::setMonVaisseauZero(int colV, int ligV)
+{
+	for(int i = 0; i < 10; i++)
+	{
+		//Si je tape au milieu du vaisseau
+		if ((mesVaisseaux[i] != 0) && (mesVaisseaux[i]->getCol() == colV)
+									&& (mesVaisseaux[i]->getLig() == ligV))
+		{
+
+		}
+		//Si je tape à gauche du vaisseau
+		if ((mesVaisseaux[i] != 0) && (mesVaisseaux[i]->getCol() - 1 == colV)
+			&& (mesVaisseaux[i]->getLig() == ligV))
+		{
+
+		}
+		//Si je tape à droite du vaisseau
+		if ((mesVaisseaux[i] != 0) && (mesVaisseaux[i]->getCol() + 1 == colV)
+			&& (mesVaisseaux[i]->getLig() == ligV))
+		{
+
+		}
+	}
+}
+
+void CJeu::tuerUnVaisseau(int col, int lig)
+{
+
 }
 
 void CJeu::jouer()
