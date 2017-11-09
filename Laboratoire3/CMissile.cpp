@@ -8,12 +8,13 @@
 
 using namespace std;
 
-CMissile::CMissile(int Lig, int Col, CTour* tour)
+CMissile::CMissile(int Lig, int Col, CTour* tour/*, CJeu* jeu*/)
 {
 	Colonne = Col;
 	Ligne = Lig;
 	LeThread = new thread(&CMissile::monter, this);
 	maTour = tour;
+	//monJeu = jeu;
 }
 
 CMissile::~CMissile()
@@ -26,7 +27,7 @@ CMissile::~CMissile()
 void CMissile::monter()
 {
 	bool collision = false;
-	while ((Ligne > 0) || (collision = true))
+	while (Ligne > 0)
 	{
 		CJeu::VerrouJeu.lock();
 		//Collision ? 
@@ -47,4 +48,49 @@ void CMissile::monter()
 	CEcran::Gotoxy(0, 0);
 	CJeu::VerrouJeu.unlock();
 	delete this;
+}
+
+bool CMissile::sousTestCollision(int colM, int ligM, int colV, int ligV)
+{
+	if (colM == colV)
+	{
+		if (ligM - 1 == ligV)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool CMissile::collision()
+{
+	bool collision = false;
+	for (int i = 0; i < 10; i++)
+	{
+		//S'il touche le bout droit
+		if (Colonne == mesVaisseaux[i]->getCol() - 1)
+		{
+			if (Ligne - 1 == mesVaisseaux[i]->getLig())
+			{
+				collision = true;
+			}
+		}
+		//S'il touche le milieu
+		if (Colonne == mesVaisseaux[i]->getCol())
+		{
+			if (Ligne - 1 == mesVaisseaux[i]->getLig())
+			{
+				collision = true;
+			}
+		}
+		//S'il touche le bout gauche
+		if (Colonne == mesVaisseaux[i]->getCol() + 1)
+		{
+			if (Ligne - 1 == mesVaisseaux[i]->getLig())
+			{
+				collision = true;
+			}
+		}
+	}
+	return collision;
 }

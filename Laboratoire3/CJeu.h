@@ -1,8 +1,6 @@
 #pragma once
 #include "CTour.h"
 #include "CVaisseau.h"
-#include "CMissile.h"
-#include <thread>
 #include <mutex>
 
 using namespace std;
@@ -13,20 +11,15 @@ private :
 	CTour* mesTours[3];
 	CVaisseau* mesVaisseaux[10];
 	int score;
-	thread* LeThread1;
-	thread* LeThread2;
-
-	void Afficher();
-	void goVaisseau();
 	
 public: 
 	CJeu();
 	~CJeu();
 
 	void jouer();
+	void goVaisseau();
 	
-	static bool testCollision(CMissile* ceMissile);
-	bool collision(CMissile* ceMissile);
+	CVaisseau* getVaisseau(int i) { return mesVaisseaux[i]; }
 
 	static mutex VerrouJeu;
 };

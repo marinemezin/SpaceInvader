@@ -25,11 +25,11 @@ CVaisseau::CVaisseau()
 	Ligne++;
 	int destin = rand() % 2;
 	if (destin == 0) { //GD
-		Colonne = 0;
+		Colonne = 1;
 		LeThread = new thread(&CVaisseau::deplacerGD, this);
 	}
 	else { //DG
-		Colonne = 100;
+		Colonne = 99;
 		LeThread = new thread(&CVaisseau::deplacerDG, this);
 	}
 }
@@ -41,46 +41,36 @@ CVaisseau::~CVaisseau()
 	delete LeThread;
 }
 
-int CVaisseau::getCol()
-{
-	return Colonne;
-}
-
-int CVaisseau::getLig()
-{
-	return Ligne;
-}
-
 void CVaisseau::deplacerGD()
 {
-	while (Colonne + 2 < 100)
+	while (Colonne + 1 < 100)
 	{
 		CJeu::VerrouJeu.lock();
 		//On efface l'ancien vaisseau
+		CEcran::Gotoxy(Colonne - 1, Ligne);
+		cout << " ";
 		CEcran::Gotoxy(Colonne, Ligne);
 		cout << " ";
 		CEcran::Gotoxy(Colonne + 1, Ligne);
-		cout << " ";
-		CEcran::Gotoxy(Colonne + 2, Ligne);
 		cout << " ";
 		//On place le nouveau vaisseau
 		Colonne++;
-		CEcran::Gotoxy(Colonne, Ligne);
+		CEcran::Gotoxy(Colonne - 1, Ligne);
 		cout << "<";
-		CEcran::Gotoxy(Colonne + 1, Ligne);
+		CEcran::Gotoxy(Colonne, Ligne);
 		cout << "*";
-		CEcran::Gotoxy(Colonne + 2, Ligne);
+		CEcran::Gotoxy(Colonne + 1, Ligne);
 		cout << ">";
 		CEcran::Gotoxy(0, 30);
 		CJeu::VerrouJeu.unlock();
 		this_thread::sleep_for(chrono::milliseconds(200));
 	}
 	CJeu::VerrouJeu.lock();
+	CEcran::Gotoxy(Colonne - 1, Ligne);
+	cout << " ";
 	CEcran::Gotoxy(Colonne, Ligne);
 	cout << " ";
 	CEcran::Gotoxy(Colonne + 1, Ligne);
-	cout << " ";
-	CEcran::Gotoxy(Colonne + 2, Ligne);
 	cout << " ";
 	CEcran::Gotoxy(0, 0);
 	CJeu::VerrouJeu.unlock();
@@ -89,34 +79,34 @@ void CVaisseau::deplacerGD()
 
 void CVaisseau::deplacerDG()
 {
-	while (Colonne - 2 > 0)
+	while (Colonne - 1 > 0)
 	{
 		CJeu::VerrouJeu.lock();
 		//On efface l'ancien vaisseau
+		CEcran::Gotoxy(Colonne + 1, Ligne);
+		cout << " ";
 		CEcran::Gotoxy(Colonne, Ligne);
 		cout << " ";
 		CEcran::Gotoxy(Colonne - 1, Ligne);
-		cout << " ";
-		CEcran::Gotoxy(Colonne - 2, Ligne);
 		cout << " ";
 		//On place le nouveau vaisseau
 		Colonne--;
-		CEcran::Gotoxy(Colonne, Ligne);
+		CEcran::Gotoxy(Colonne + 1, Ligne);
 		cout << ">";
-		CEcran::Gotoxy(Colonne - 1, Ligne);
+		CEcran::Gotoxy(Colonne, Ligne);
 		cout << "*";
-		CEcran::Gotoxy(Colonne - 2, Ligne);
+		CEcran::Gotoxy(Colonne - 1, Ligne);
 		cout << "<";
 		CEcran::Gotoxy(0, 30);
 		CJeu::VerrouJeu.unlock();
 		this_thread::sleep_for(chrono::milliseconds(200));
 	}
 	CJeu::VerrouJeu.lock();
+	CEcran::Gotoxy(Colonne + 1, Ligne);
+	cout << " ";
 	CEcran::Gotoxy(Colonne, Ligne);
 	cout << " ";
 	CEcran::Gotoxy(Colonne - 1, Ligne);
-	cout << " ";
-	CEcran::Gotoxy(Colonne - 2, Ligne);
 	cout << " ";
 	CEcran::Gotoxy(0, 0);
 	CJeu::VerrouJeu.unlock();

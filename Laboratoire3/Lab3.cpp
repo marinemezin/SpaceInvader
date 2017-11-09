@@ -7,6 +7,7 @@ using namespace std;
 int main()
 {
 	CJeu *jeu = new CJeu();
+	jeu->goVaisseau();
 	jeu->jouer();
 	CEcran::Gotoxy(0, 30);
 	system("PAUSE");

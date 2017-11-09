@@ -10,9 +10,10 @@ private:
 	int monMissile;
 	int Ligne;
 	int Colonne;
+	//CJeu* monJeu;
 
 public:
-	CTour(int numtour, int positionX, int positionY);
+	CTour(int numtour, int positionX, int positionY/*, CJeu* jeu*/);
 	~CTour();
 
 	//Créé un thread pour lancer un missile
