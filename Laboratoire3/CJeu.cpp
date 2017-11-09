@@ -45,26 +45,27 @@ void CJeu::goVaisseau()
 	while (CVaisseau::nbVaisseauACreer != 0)
 	{
 		if (CVaisseau::nbVaisseau < 4) { //pas + de 4 vaisseau en meme temps sur le jeu
-			mesVaisseaux[9 - CVaisseau::nbVaisseauACreer] = new CVaisseau(9 - CVaisseau::nbVaisseauACreer, this);
+			mesVaisseaux[10 - CVaisseau::nbVaisseauACreer] = new CVaisseau(10 - CVaisseau::nbVaisseauACreer, this);
 			listeVaisseaux[9 - CVaisseau::nbVaisseauACreer] = 1;
 		}
 		this_thread::sleep_for(chrono::milliseconds(3200));
 	}
 }
 
-int CJeu::getColV(int i)
+int CJeu::getColV(int position)
 {
-	if (listeVaisseaux[i] != 0)
+	bool col = 1;
+	if (listeVaisseaux[position] != 0)
 	{
-		return mesVaisseaux[i]->getCol();
+		return mesVaisseaux[position]->getCol();
 	}
 	return -1;
 }
-int CJeu::getLigV(int i)
+int CJeu::getLigV(int position)
 {
-	if (listeVaisseaux[i] != 0)
+	if (listeVaisseaux[position] != 0)
 	{
-		return mesVaisseaux[i]->getLig();
+		return mesVaisseaux[position]->getLig();
 	}
 	return -1;
 }
