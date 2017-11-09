@@ -20,7 +20,8 @@ CJeu::CJeu()
 	mesTours[2]->afficher();
 	score = 0;
 	for (int i = 0; i < 10; i++) {
-		mesVaisseaux[i] = new CVaisseau(-1);
+		mesVaisseaux[i] = 0;
+		listeVaisseaux[i] = 0;
 	}
 	LeThread = new thread(&CJeu::goVaisseau, this);
 }
@@ -33,6 +34,10 @@ CJeu::~CJeu()
 	delete mesTours[1];
 	delete mesTours[2];
 	delete mesTours;
+	for (int i = 0; i < 10; i++)
+	{
+		delete mesVaisseaux[i];
+	}
 }
 
 void CJeu::goVaisseau()
@@ -40,49 +45,39 @@ void CJeu::goVaisseau()
 	while (CVaisseau::nbVaisseauACreer != 0)
 	{
 		if (CVaisseau::nbVaisseau < 4) { //pas + de 4 vaisseau en meme temps sur le jeu
-			mesVaisseaux[9 - CVaisseau::nbVaisseauACreer] = new CVaisseau();
+			mesVaisseaux[9 - CVaisseau::nbVaisseauACreer] = new CVaisseau(9 - CVaisseau::nbVaisseauACreer, this);
+			listeVaisseaux[9 - CVaisseau::nbVaisseauACreer] = 1;
 		}
 		this_thread::sleep_for(chrono::milliseconds(3200));
 	}
 }
 
-CVaisseau* CJeu::getVaisseau(int i)
+int CJeu::getColV(int i)
 {
-	if (mesVaisseaux[i]->getCol() != -1)
-	{ 
-		return mesVaisseaux[i];
-	}
-	return 0;
-}
-
-void CJeu::setMonVaisseauZero(int colV, int ligV)
-{
-	for(int i = 0; i < 10; i++)
+	if (listeVaisseaux[i] != 0)
 	{
-		//Si je tape au milieu du vaisseau
-		if ((mesVaisseaux[i] != 0) && (mesVaisseaux[i]->getCol() == colV)
-									&& (mesVaisseaux[i]->getLig() == ligV))
-		{
-			mesVaisseaux[i]->deleteCeVaisseau();
-		}
-		//Si je tape à gauche du vaisseau
-		if ((mesVaisseaux[i] != 0) && (mesVaisseaux[i]->getCol() - 1 == colV)
-			&& (mesVaisseaux[i]->getLig() == ligV))
-		{
-			mesVaisseaux[i]->deleteCeVaisseau();
-		}
-		//Si je tape à droite du vaisseau
-		if ((mesVaisseaux[i] != 0) && (mesVaisseaux[i]->getCol() + 1 == colV)
-			&& (mesVaisseaux[i]->getLig() == ligV))
-		{
-			mesVaisseaux[i]->deleteCeVaisseau();
-		}
+		return mesVaisseaux[i]->getCol();
 	}
+	return -1;
+}
+int CJeu::getLigV(int i)
+{
+	if (listeVaisseaux[i] != 0)
+	{
+		return mesVaisseaux[i]->getLig();
+	}
+	return -1;
 }
 
-void CJeu::tuerUnVaisseau(int col, int lig)
+void CJeu::setMonVaisseauZero(int position)
 {
+	listeVaisseaux[position] = 0;
+}
 
+//modifier pour obtenir direct l'indice du vaisseau à killer
+void CJeu::tuerUnVaisseau(int position)
+{
+	mesVaisseaux[position]->deleteCeVaisseau();
 }
 
 void CJeu::jouer()

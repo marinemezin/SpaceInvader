@@ -53,10 +53,8 @@ void CMissile::monter()
 
 bool CMissile::sousTestCollision(int colV, int ligV)
 {
-	if (Colonne == colV)
-	{
-		if (Ligne - 1 == ligV)
-		{
+	if (Colonne == colV) {
+		if (Ligne - 1 == ligV) {
 			return true;
 		}
 	}
@@ -67,9 +65,9 @@ bool CMissile::attentionCollision()
 {
 	bool collision = false;
 	for (int i = 0; i < 10; i++) {
-		if (monJeu->getVaisseau(i) != 0) {
-			int colV = monJeu->getVaisseau(i)->getCol();
-			int ligV = monJeu->getVaisseau(i)->getLig();
+		if (monJeu->getColV(i) != -1) {
+			int colV = monJeu->getColV(i);
+			int ligV = monJeu->getLigV(i);
 			//S'il touche le bout droit
 			bool test1 = sousTestCollision(colV - 1, ligV);
 			//S'il touche le milieu
@@ -78,6 +76,9 @@ bool CMissile::attentionCollision()
 			bool test3 = sousTestCollision(colV + 1, ligV);
 			if (test1 || test2 || test3) {
 				collision = true;
+				if (test1) { monJeu->tuerUnVaisseau(i); }
+				if(test2) { monJeu->tuerUnVaisseau(i); }
+				if(test3) { monJeu->tuerUnVaisseau(i); }
 			}
 		}
 	}

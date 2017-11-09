@@ -9,7 +9,6 @@ class CTour
 private:
 	int numerotour;
 	int monMissile;
-	//CMissile* meinMissile;
 	int Ligne;
 	int Colonne;
 	CJeu* monJeu;

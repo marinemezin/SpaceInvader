@@ -14,18 +14,7 @@ int main()
 }
 
 /*
-CVaisseau* CJeu::getVaisseau(int i)
-{
-if (mesVaisseaux[i]->getCol() != -1)
-{
-return mesVaisseaux[i];
-}
-return 0;
-}
-
-Cette méthode beug
-Il me dit que le tableau est vide alors que je le rempli
-Je pense que le problème viens d'un problème de synchronisation des threads
-
-En mode debug tout fonctionne mais quand je lance ça ne fonctionne plus 
+Beug sur methode getColV
+Problème de lecture
+Me dit que la listeVaisseau est vide alors que j'initialise tout à 0 au début dans le constructeur
 */

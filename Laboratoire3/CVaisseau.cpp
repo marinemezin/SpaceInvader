@@ -11,8 +11,10 @@ int CVaisseau::nbVaisseau = 0;
 bool CVaisseau::premierVaisseau = false;
 int CVaisseau::nbVaisseauACreer = 10;
 
-CVaisseau::CVaisseau()
+CVaisseau::CVaisseau(int p, CJeu* jeu)
 {
+	place = p;
+	monJeu = jeu;
 	if (!premierVaisseau)
 	{
 		srand(time(NULL));
@@ -34,15 +36,16 @@ CVaisseau::CVaisseau()
 	}
 }
 
-CVaisseau::CVaisseau(int chiffre)
+/*CVaisseau::CVaisseau(int chiffre)
 {
 	Colonne = chiffre;
 	Ligne = chiffre;
-}
+}*/
 
 CVaisseau::~CVaisseau()
 {
 	nbVaisseau--;
+	monJeu->setMonVaisseauZero(place);
 	LeThread->detach();
 	delete LeThread;
 }

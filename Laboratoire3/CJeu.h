@@ -11,6 +11,7 @@ class CJeu
 private : 
 	CTour* mesTours[3];
 	CVaisseau* mesVaisseaux[10];
+	int listeVaisseaux[10];
 	int vaisseauATuer[2];
 	int score;
 	thread* LeThread;
@@ -23,9 +24,10 @@ public:
 
 	void jouer();
 	
-	CVaisseau* getVaisseau(int i);
-	void setMonVaisseauZero(int colV, int ligV);
-	void tuerUnVaisseau(int col, int lig);
+	int getColV(int i);
+	int getLigV(int i);
+	void setMonVaisseauZero(int position);
+	void tuerUnVaisseau(int position); //appeler par un missile
 
 	static mutex VerrouJeu;
 };
