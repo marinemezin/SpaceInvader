@@ -68,29 +68,29 @@ bool CMissile::collision()
 	for (int i = 0; i < 10; i++)
 	{
 		//S'il touche le bout droit
-		if (Colonne == mesVaisseaux[i]->getCol() - 1)
+		/*if (Colonne == mesVaisseaux[i]->getCol() - 1)
 		{
 			if (Ligne - 1 == mesVaisseaux[i]->getLig())
 			{
 				collision = true;
 			}
-		}
+		}*/
 		//S'il touche le milieu
-		if (Colonne == mesVaisseaux[i]->getCol())
+		/*if (Colonne == mesVaisseaux[i]->getCol())
 		{
 			if (Ligne - 1 == mesVaisseaux[i]->getLig())
 			{
 				collision = true;
 			}
-		}
+		}*/
 		//S'il touche le bout gauche
-		if (Colonne == mesVaisseaux[i]->getCol() + 1)
+		/*if (Colonne == mesVaisseaux[i]->getCol() + 1)
 		{
 			if (Ligne - 1 == mesVaisseaux[i]->getLig())
 			{
 				collision = true;
 			}
-		}
+		}*/
 	}
 	return collision;
 }

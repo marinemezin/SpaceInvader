@@ -21,8 +21,8 @@ CVaisseau::CVaisseau()
 	nbVaisseau++;
 	nbVaisseauACreer--;
 	//Lignes entre 1 et 15
-	Ligne = rand() % 15;
-	Ligne++;
+	Ligne = rand() % 15; //entre 2 et 15
+	Ligne = Ligne + 2;
 	int destin = rand() % 2;
 	if (destin == 0) { //GD
 		Colonne = 1;

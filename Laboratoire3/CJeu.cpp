@@ -22,11 +22,13 @@ CJeu::CJeu()
 	for (int i = 0; i < 10; i++) {
 		mesVaisseaux[i] = 0;
 	}
+	LeThread = new thread(&CJeu::goVaisseau, this);
 }
 
 CJeu::~CJeu()
 {
-
+	LeThread->detach();
+	delete LeThread;
 }
 
 void CJeu::goVaisseau()

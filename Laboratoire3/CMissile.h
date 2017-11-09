@@ -2,6 +2,7 @@
 
 #include <thread>
 #include "CTour.h"
+#include "CJeu.h"
 
 using namespace std;
 
