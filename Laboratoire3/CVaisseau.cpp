@@ -78,7 +78,6 @@ void CVaisseau::deplacerGD()
 	{
 		destructionClassique();
 	}
-	delete this;
 }
 
 void CVaisseau::deplacerDG()
