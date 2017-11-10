@@ -26,7 +26,7 @@ CMissile::~CMissile()
 void CMissile::monter()
 {
 	bool collision = false;
-	while (Ligne > 0)
+	while ((Ligne > 0) && (!collision))
 	{
 		CJeu::VerrouJeu.lock();
 		//Collision ? 

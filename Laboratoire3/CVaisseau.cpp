@@ -14,6 +14,7 @@ int CVaisseau::nbVaisseauACreer = 10;
 CVaisseau::CVaisseau(int p, CJeu* jeu)
 {
 	place = p;
+	doitMourir = false;
 	monJeu = jeu;
 	if (!premierVaisseau)
 	{
@@ -36,12 +37,6 @@ CVaisseau::CVaisseau(int p, CJeu* jeu)
 	}
 }
 
-/*CVaisseau::CVaisseau(int chiffre)
-{
-	Colonne = chiffre;
-	Ligne = chiffre;
-}*/
-
 CVaisseau::~CVaisseau()
 {
 	nbVaisseau--;
@@ -52,7 +47,7 @@ CVaisseau::~CVaisseau()
 
 void CVaisseau::deplacerGD()
 {
-	while (Colonne + 1 < 100)
+	while ((Colonne + 1 < 100) && (!doitMourir))
 	{
 		CJeu::VerrouJeu.lock();
 		//On efface l'ancien vaisseau
@@ -88,7 +83,7 @@ void CVaisseau::deplacerGD()
 
 void CVaisseau::deplacerDG()
 {
-	while (Colonne - 1 > 0)
+	while ((Colonne - 1 > 0) && (!doitMourir))
 	{
 		CJeu::VerrouJeu.lock();
 		//On efface l'ancien vaisseau
@@ -124,15 +119,5 @@ void CVaisseau::deplacerDG()
 
 void CVaisseau::deleteCeVaisseau()
 {
-	//Suppression standard
-	//CJeu::VerrouJeu.lock();
-	CEcran::Gotoxy(Colonne - 1, Ligne);
-	cout << " ";
-	CEcran::Gotoxy(Colonne, Ligne);
-	cout << " ";
-	CEcran::Gotoxy(Colonne + 1, Ligne);
-	cout << " ";
-	CEcran::Gotoxy(0, 0);
-	//CJeu::VerrouJeu.unlock();
-	delete this;
+	doitMourir = true;
 }

@@ -17,6 +17,7 @@ private:
 	thread* LeThread;
 	int place;
 	CJeu* monJeu;
+	bool doitMourir;
 
 	void deplacerGD();
 	void deplacerDG();
