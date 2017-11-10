@@ -70,15 +70,14 @@ void CVaisseau::deplacerGD()
 		CJeu::VerrouJeu.unlock();
 		this_thread::sleep_for(chrono::milliseconds(200));
 	}
-	CJeu::VerrouJeu.lock();
-	CEcran::Gotoxy(Colonne - 1, Ligne);
-	cout << " ";
-	CEcran::Gotoxy(Colonne, Ligne);
-	cout << " ";
-	CEcran::Gotoxy(Colonne + 1, Ligne);
-	cout << " ";
-	CEcran::Gotoxy(0, 0);
-	CJeu::VerrouJeu.unlock();
+	if (doitMourir)
+	{
+		destructionAnimee();
+	}
+	else
+	{
+		destructionClassique();
+	}
 	delete this;
 }
 
