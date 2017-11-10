@@ -115,9 +115,18 @@ void CVaisseau::deplacerDG()
 	CEcran::Gotoxy(0, 0);
 	CJeu::VerrouJeu.unlock();
 	delete this;
+	/*if (doitMourir)
+	{
+		destructionAnimee();
+	}
+	else
+	{
+		destructionCLassique();
+	}*/
 }
 
 void CVaisseau::deleteCeVaisseau()
 {
+	monJeu->setScorePlus1();
 	doitMourir = true;
 }

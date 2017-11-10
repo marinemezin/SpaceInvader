@@ -72,6 +72,11 @@ int CJeu::getLigV(int position)
 	return -1;
 }
 
+void CJeu::setScorePlus1()
+{
+	score++;
+}
+
 void CJeu::setMonVaisseauZero(int position)
 {
 	listeVaisseaux[position] = 0;
