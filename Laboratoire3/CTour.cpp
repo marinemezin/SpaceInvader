@@ -4,8 +4,7 @@
 #include "CMissile.h"
 
 
-CTour::CTour(int num,int Lig, int Col, CJeu* jeu)
-{
+CTour::CTour(int num,int Lig, int Col, CJeu* jeu) {
 	numerotour = num;
 	monMissile = 0;
 	Ligne = Lig;
@@ -13,33 +12,26 @@ CTour::CTour(int num,int Lig, int Col, CJeu* jeu)
 	monJeu = jeu;
 }
 
-CTour::~CTour()
-{
-
+CTour::~CTour() {
 }
 
-void CTour::lancerMissile()
-{
-	if (monMissile == 0)
-	{
+void CTour::lancerMissile() {
+	if (monMissile == 0) {
 		new CMissile(Ligne - 1, Colonne, this);
 		monMissile++;
 		this_thread::sleep_for(chrono::milliseconds(50));
 	}
 }
 
-void CTour::setMonMissileZero()
-{
+void CTour::setMonMissileZero() {
 	monMissile = 0;
 }
 
-CJeu* CTour::getMonJeu()
-{
+CJeu* CTour::getMonJeu() {
 	return monJeu;
 }
 
-void CTour::afficher()
-{
+void CTour::afficher() {
 	CJeu::VerrouJeu.lock();
 	CEcran::Gotoxy(Colonne, Ligne);
 	cout << "O";

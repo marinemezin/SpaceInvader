@@ -13,9 +13,7 @@ private:
 	thread* LeThread;
 	CTour* maTour;
 
-	//Appeler dans le constructeur pour le faire monter direct
 	void monter();
-
 	bool attentionCollision();
 	bool sousTestCollision(int colV, int ligV);
 

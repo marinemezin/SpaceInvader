@@ -1,35 +1,28 @@
 #include <iostream>
-
 #include <thread>
-
 #include "CMissile.h"
 #include "CEcran.h"
 #include "CJeu.h"
 
 using namespace std;
 
-CMissile::CMissile(int Lig, int Col, CTour* tour)
-{
+CMissile::CMissile(int Lig, int Col, CTour* tour) {
 	Colonne = Col;
 	Ligne = Lig;
 	maTour = tour;
 	LeThread = new thread(&CMissile::monter, this);
 }
 
-CMissile::~CMissile()
-{
+CMissile::~CMissile() {
 	maTour->setMonMissileZero();
 	LeThread->detach();
 	delete LeThread;
 }
 
-void CMissile::monter()
-{
+void CMissile::monter() {
 	bool collision = false;
-	while ((Ligne > 0) && (!collision))
-	{
+	while ((Ligne > 0) && (!collision)) {
 		CJeu::VerrouJeu.lock();
-		//Collision ? 
 		collision = attentionCollision();
 		if (!collision) {
 			CEcran::Gotoxy(Colonne, Ligne);
@@ -50,8 +43,7 @@ void CMissile::monter()
 	delete this;
 }
 
-bool CMissile::sousTestCollision(int colV, int ligV)
-{
+bool CMissile::sousTestCollision(int colV, int ligV) {
 	if (Colonne == colV) {
 		if (Ligne - 1 == ligV) {
 			return true;
@@ -60,8 +52,7 @@ bool CMissile::sousTestCollision(int colV, int ligV)
 	return false;
 }
 
-bool CMissile::attentionCollision()
-{
+bool CMissile::attentionCollision() {
 	bool collision = false;
 	for (int i = 0; i < 10; i++) {
 		if (maTour->getMonJeu()->getColV(i) != -1) {
@@ -75,15 +66,9 @@ bool CMissile::attentionCollision()
 			bool test3 = sousTestCollision(colV + 1, ligV);
 			if (test1 || test2 || test3) {
 				collision = true;
-				if (test1) { 
-					maTour->getMonJeu()->tuerUnVaisseau(i);
-				}
-				if(test2) { 
-					maTour->getMonJeu()->tuerUnVaisseau(i); 
-				}
-				if(test3) { 
-					maTour->getMonJeu()->tuerUnVaisseau(i); 
-				}
+				if (test1) { maTour->getMonJeu()->tuerUnVaisseau(i); }
+				if(test2) { maTour->getMonJeu()->tuerUnVaisseau(i); }
+				if(test3) { maTour->getMonJeu()->tuerUnVaisseau(i); }
 			}
 		}
 	}

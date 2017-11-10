@@ -15,12 +15,10 @@ private:
 	CJeu* monJeu;
 
 public:
-	CTour(int numtour, int positionX, int positionY, CJeu* jeu);
+	CTour(int num, int Lig, int Col, CJeu* jeu);
 	~CTour();
 
-	//Créé un thread pour lancer un missile
 	void lancerMissile();
-
 	CJeu* getMonJeu();
 	void setMonMissileZero();
 	void afficher();

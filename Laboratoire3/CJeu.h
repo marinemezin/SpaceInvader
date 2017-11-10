@@ -31,7 +31,7 @@ public:
 	int getLigV(int i);
 	void setScorePlus1();
 	void setMonVaisseauZero(int position);
-	void tuerUnVaisseau(int position); //appeler par un missile
+	void tuerUnVaisseau(int position);
 
 	static mutex VerrouJeu;
 };

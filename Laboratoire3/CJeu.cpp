@@ -11,8 +11,7 @@ using namespace std;
 
 mutex CJeu::VerrouJeu;
 
-CJeu::CJeu()
-{
+CJeu::CJeu() {
 	score = 0;
 	for (int i = 0; i < 10; i++) {
 		mesVaisseaux[i] = 0;
@@ -28,69 +27,57 @@ CJeu::CJeu()
 	LeThreadScore = new thread(&CJeu::afficherScore, this);
 }
 
-CJeu::~CJeu()
-{
+CJeu::~CJeu() {
 	LeThread->detach();
 	delete LeThread;
 	delete mesTours[0];
 	delete mesTours[1];
 	delete mesTours[2];
 	delete mesTours;
-	for (int i = 0; i < 10; i++)
-	{
+	for (int i = 0; i < 10; i++) {
 		delete mesVaisseaux[i];
 	}
 }
 
-void CJeu::goVaisseau()
-{
-	while (CVaisseau::nbVaisseauACreer != 0)
-	{
-		if (CVaisseau::nbVaisseau < 4) { //pas + de 4 vaisseau en meme temps sur le jeu
-			CVaisseau* myVaisseau = new CVaisseau(10 - CVaisseau::nbVaisseauACreer, this);
-			mesVaisseaux[9 - CVaisseau::nbVaisseauACreer] = myVaisseau;
+void CJeu::goVaisseau() {
+	while (CVaisseau::nbVaisseauACreer != 0) {
+		if (CVaisseau::nbVaisseau < 4) {
+			CVaisseau* myV = new CVaisseau(10 - CVaisseau::nbVaisseauACreer, this);
+			mesVaisseaux[9 - CVaisseau::nbVaisseauACreer] = myV;
 			listeVaisseaux[9 - CVaisseau::nbVaisseauACreer] = 1;
 		}
 		this_thread::sleep_for(chrono::milliseconds(3200));
 	}
 }
 
-int CJeu::getColV(int position)
-{
+int CJeu::getColV(int position) {
 	bool col = 1;
-	if (listeVaisseaux[position] != 0)
-	{
+	if (listeVaisseaux[position] != 0) {
 		return mesVaisseaux[position]->getCol();
 	}
 	return -1;
 }
-int CJeu::getLigV(int position)
-{
-	if (listeVaisseaux[position] != 0)
-	{
+
+int CJeu::getLigV(int position) {
+	if (listeVaisseaux[position] != 0) {
 		return mesVaisseaux[position]->getLig();
 	}
 	return -1;
 }
 
-void CJeu::setScorePlus1()
-{
+void CJeu::setScorePlus1() {
 	score = score + 1;
 }
 
-void CJeu::setMonVaisseauZero(int position)
-{
+void CJeu::setMonVaisseauZero(int position) {
 	listeVaisseaux[position] = 0;
 }
 
-//modifier pour obtenir direct l'indice du vaisseau à killer
-void CJeu::tuerUnVaisseau(int position)
-{
+void CJeu::tuerUnVaisseau(int position) {
 	mesVaisseaux[position]->deleteCeVaisseau();
 }
 
-void CJeu::afficherScore()
-{
+void CJeu::afficherScore() {
 	int scoreInitial = score;
 	while (CVaisseau::nbVaisseau != 0) {
 		if (scoreInitial != score) {
@@ -105,14 +92,11 @@ void CJeu::afficherScore()
 	}
 }
 
-void CJeu::jouer()
-{
+void CJeu::jouer() {
 	char monNumChar = _getch();
 	int monNum = monNumChar - 48;
-	while (CVaisseau::nbVaisseau != 0)
-	{
-		switch (monNum)
-		{
+	while (CVaisseau::nbVaisseau != 0) {
+		switch (monNum) {
 		case 1:
 			mesTours[0]->lancerMissile();
 			break;
@@ -125,9 +109,7 @@ void CJeu::jouer()
 		default:
 			break;
 		}
-		//On demande un nouveau numéro
 		monNumChar = _getch();
 		monNum = monNumChar - 48;
 	}
 }
-//Gotoxy(COLONNE,LIGNE)

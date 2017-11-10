@@ -27,10 +27,10 @@ private:
 	void destructionAnimee();
 	void destructionClassique();
 	void destructionAnimeecarac(string carac, bool temps);
+	void mouvement(string carac, int lig, int col);
 
 public:
 	CVaisseau(int p, CJeu* jeu);
-	//CVaisseau(int chiffre);
 	~CVaisseau();
 	static int nbVaisseau;
 	static int nbVaisseauACreer;
