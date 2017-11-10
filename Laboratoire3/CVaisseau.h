@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h> 
+#include <string>
 
 using namespace std;
 
@@ -23,6 +24,9 @@ private:
 	void deplacerDG();
 
 	static bool premierVaisseau;
+	void destructionAnimee();
+	void destructionClassique();
+	void destructionAnimeecarac(string carac, bool temps);
 
 public:
 	CVaisseau(int p, CJeu* jeu);

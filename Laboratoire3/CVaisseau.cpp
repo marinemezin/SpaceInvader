@@ -4,6 +4,7 @@
 #include "CJeu.h"
 #include <thread>
 
+
 using namespace std;
 
 int CVaisseau::nbVaisseau = 0;
@@ -105,6 +106,18 @@ void CVaisseau::deplacerDG()
 		CJeu::VerrouJeu.unlock();
 		this_thread::sleep_for(chrono::milliseconds(200));
 	}
+	if (doitMourir)
+	{
+		destructionAnimee();
+	}
+	else
+	{
+		destructionClassique();
+	}
+}
+
+void CVaisseau::destructionClassique()
+{
 	CJeu::VerrouJeu.lock();
 	CEcran::Gotoxy(Colonne + 1, Ligne);
 	cout << " ";
@@ -115,14 +128,51 @@ void CVaisseau::deplacerDG()
 	CEcran::Gotoxy(0, 0);
 	CJeu::VerrouJeu.unlock();
 	delete this;
-	/*if (doitMourir)
+}
+
+void CVaisseau::destructionAnimee()
+{
+	CJeu::VerrouJeu.lock();
+	destructionAnimeecarac("*", true);
+	this_thread::sleep_for(chrono::milliseconds(150));
+	destructionAnimeecarac(" ", false);
+	CJeu::VerrouJeu.unlock();
+	delete this;
+}
+
+void CVaisseau :: destructionAnimeecarac(string carac, bool temps)
+{
+	CEcran::Gotoxy(Colonne, Ligne);
+	cout << carac;
+	CEcran::Gotoxy(Colonne + 1, Ligne);
+	cout << carac;
+	CEcran::Gotoxy(Colonne - 1, Ligne);
+	cout << carac;
+	CEcran::Gotoxy(Colonne, Ligne + 1);
+	cout << carac;
+	CEcran::Gotoxy(Colonne, Ligne - 1);
+	cout << carac;
+	if (temps)
 	{
-		destructionAnimee();
+		this_thread::sleep_for(chrono::milliseconds(300));
 	}
-	else
-	{
-		destructionCLassique();
-	}*/
+	CEcran::Gotoxy(Colonne + 2, Ligne);
+	cout << carac;
+	CEcran::Gotoxy(Colonne - 2, Ligne);
+	cout << carac;
+	CEcran::Gotoxy(Colonne, Ligne + 2);
+	cout << carac;
+	CEcran::Gotoxy(Colonne, Ligne - 2);
+	cout << carac;
+	CEcran::Gotoxy(Colonne + 1, Ligne + 1);
+	cout << carac;
+	CEcran::Gotoxy(Colonne + 1, Ligne - 1);
+	cout << carac;
+	CEcran::Gotoxy(Colonne - 1, Ligne + 1);
+	cout << carac;
+	CEcran::Gotoxy(Colonne - 1, Ligne - 1);
+	cout << carac;
+	CEcran::Gotoxy(0, 0);
 }
 
 void CVaisseau::deleteCeVaisseau()
