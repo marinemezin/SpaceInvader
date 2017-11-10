@@ -18,13 +18,13 @@ CJeu::CJeu()
 		mesVaisseaux[i] = 0;
 		listeVaisseaux[i] = 0;
 	}
-	LeThread = new thread(&CJeu::goVaisseau, this);
 	mesTours[0] = new CTour(1, 28, 20, this);
 	mesTours[1] = new CTour(2, 28, 50, this);
 	mesTours[2] = new CTour(3, 28, 80, this);
 	mesTours[0]->afficher();
 	mesTours[1]->afficher();
 	mesTours[2]->afficher();
+	LeThread = new thread(&CJeu::goVaisseau, this);
 }
 
 CJeu::~CJeu()

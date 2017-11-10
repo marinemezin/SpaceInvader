@@ -125,7 +125,7 @@ void CVaisseau::deplacerDG()
 void CVaisseau::deleteCeVaisseau()
 {
 	//Suppression standard
-	CJeu::VerrouJeu.lock();
+	//CJeu::VerrouJeu.lock();
 	CEcran::Gotoxy(Colonne - 1, Ligne);
 	cout << " ";
 	CEcran::Gotoxy(Colonne, Ligne);
@@ -133,6 +133,6 @@ void CVaisseau::deleteCeVaisseau()
 	CEcran::Gotoxy(Colonne + 1, Ligne);
 	cout << " ";
 	CEcran::Gotoxy(0, 0);
-	CJeu::VerrouJeu.unlock();
+	//CJeu::VerrouJeu.unlock();
 	delete this;
 }

@@ -75,9 +75,15 @@ bool CMissile::attentionCollision()
 			bool test3 = sousTestCollision(colV + 1, ligV);
 			if (test1 || test2 || test3) {
 				collision = true;
-				if (test1) { maTour->getMonJeu()->tuerUnVaisseau(i); }
-				if(test2) { maTour->getMonJeu()->tuerUnVaisseau(i); }
-				if(test3) { maTour->getMonJeu()->tuerUnVaisseau(i); }
+				if (test1) { 
+					maTour->getMonJeu()->tuerUnVaisseau(i);
+				}
+				if(test2) { 
+					maTour->getMonJeu()->tuerUnVaisseau(i); 
+				}
+				if(test3) { 
+					maTour->getMonJeu()->tuerUnVaisseau(i); 
+				}
 			}
 		}
 	}
