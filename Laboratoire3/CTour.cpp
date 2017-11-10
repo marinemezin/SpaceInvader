@@ -40,6 +40,8 @@ CJeu* CTour::getMonJeu()
 
 void CTour::afficher()
 {
+	CJeu::VerrouJeu.lock();
 	CEcran::Gotoxy(Colonne, Ligne);
 	cout << "O";
+	CJeu::VerrouJeu.unlock();
 }

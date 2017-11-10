@@ -3,7 +3,7 @@
 #include <iostream>
 #include "CJeu.h"
 
-class CJeu;
+
 
 class CTour
 {

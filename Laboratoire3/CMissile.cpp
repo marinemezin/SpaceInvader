@@ -12,8 +12,8 @@ CMissile::CMissile(int Lig, int Col, CTour* tour)
 {
 	Colonne = Col;
 	Ligne = Lig;
-	LeThread = new thread(&CMissile::monter, this);
 	maTour = tour;
+	LeThread = new thread(&CMissile::monter, this);
 }
 
 CMissile::~CMissile()
