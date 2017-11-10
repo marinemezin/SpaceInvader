@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include "CJeu.h"
 
 class CJeu;
 
@@ -20,6 +21,7 @@ public:
 	//Créé un thread pour lancer un missile
 	void lancerMissile();
 
+	CJeu* getMonJeu();
 	void setMonMissileZero();
 	void afficher();
 };

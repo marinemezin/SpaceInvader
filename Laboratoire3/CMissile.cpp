@@ -8,13 +8,12 @@
 
 using namespace std;
 
-CMissile::CMissile(int Lig, int Col, CTour* tour, CJeu* jeu)
+CMissile::CMissile(int Lig, int Col, CTour* tour)
 {
 	Colonne = Col;
 	Ligne = Lig;
 	LeThread = new thread(&CMissile::monter, this);
 	maTour = tour;
-	monJeu = jeu;
 }
 
 CMissile::~CMissile()
@@ -65,9 +64,9 @@ bool CMissile::attentionCollision()
 {
 	bool collision = false;
 	for (int i = 0; i < 10; i++) {
-		if (monJeu->getColV(i) != -1) {
-			int colV = monJeu->getColV(i);
-			int ligV = monJeu->getLigV(i);
+		if (maTour->getMonJeu()->getColV(i) != -1) {
+			int colV = maTour->getMonJeu()->getColV(i);
+			int ligV = maTour->getMonJeu()->getLigV(i);
 			//S'il touche le bout droit
 			bool test1 = sousTestCollision(colV - 1, ligV);
 			//S'il touche le milieu
@@ -76,9 +75,9 @@ bool CMissile::attentionCollision()
 			bool test3 = sousTestCollision(colV + 1, ligV);
 			if (test1 || test2 || test3) {
 				collision = true;
-				if (test1) { monJeu->tuerUnVaisseau(i); }
-				if(test2) { monJeu->tuerUnVaisseau(i); }
-				if(test3) { monJeu->tuerUnVaisseau(i); }
+				if (test1) { maTour->getMonJeu()->tuerUnVaisseau(i); }
+				if(test2) { maTour->getMonJeu()->tuerUnVaisseau(i); }
+				if(test3) { maTour->getMonJeu()->tuerUnVaisseau(i); }
 			}
 		}
 	}

@@ -1,10 +1,11 @@
 #pragma once
 #include "CVaisseau.h"
-#include "CTour.h"
 #include <thread>
 #include <mutex>
 
 using namespace std;
+
+class CTour;
 
 class CJeu
 {
