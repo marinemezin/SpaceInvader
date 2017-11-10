@@ -16,8 +16,10 @@ private :
 	int vaisseauATuer[2];
 	int score;
 	thread* LeThread;
+	thread* LeThreadScore;
 
 	void goVaisseau();
+	void afficherScore();
 	
 public: 
 	CJeu();

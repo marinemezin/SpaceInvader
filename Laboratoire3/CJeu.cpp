@@ -25,6 +25,7 @@ CJeu::CJeu()
 	mesTours[1]->afficher();
 	mesTours[2]->afficher();
 	LeThread = new thread(&CJeu::goVaisseau, this);
+	LeThreadScore = new thread(&CJeu::afficherScore, this);
 }
 
 CJeu::~CJeu()
@@ -74,7 +75,7 @@ int CJeu::getLigV(int position)
 
 void CJeu::setScorePlus1()
 {
-	score++;
+	score = score + 1;
 }
 
 void CJeu::setMonVaisseauZero(int position)
@@ -86,6 +87,22 @@ void CJeu::setMonVaisseauZero(int position)
 void CJeu::tuerUnVaisseau(int position)
 {
 	mesVaisseaux[position]->deleteCeVaisseau();
+}
+
+void CJeu::afficherScore()
+{
+	int scoreInitial = score;
+	while (CVaisseau::nbVaisseau != 0) {
+		if (scoreInitial != score) {
+			VerrouJeu.lock();
+			CEcran::Gotoxy(0, 29);
+			cout << "Score : ";
+			CEcran::Gotoxy(9, 29);
+			cout << score;
+			VerrouJeu.unlock();
+		}
+		this_thread::sleep_for(chrono::milliseconds(1000));
+	}
 }
 
 void CJeu::jouer()
